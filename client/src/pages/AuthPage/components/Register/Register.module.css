@@ -1,0 +1,90 @@
+.bodyTop{
+    height: 81%;
+    width: 100%;
+    
+
+    /* background-color: #6b4949; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input1, .input2, .input3, .input4{
+    height: 60px;
+    width: 70%;
+
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.input1Left, .input1Right, .input2Left, .input2Right, .input3Left, .input3Right, .input4Left, .input4Right{
+    height: 100%;
+    width: 50%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.input1Left, .input2Left, .input3Left, .input4Left{
+    width: 35%;
+}
+.input1 h3, .input2 h3, .input3 h3, .input4 h3{
+    text-align: end;
+    color: #474444;
+    font-weight: 600;
+    font-size: 1.4vw;
+}
+
+.bodyTop input{
+    background-color: #F4F4F4;
+    outline: none;
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 35px;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 1.3vw;
+    font-weight: 600;
+    color: #474444;
+}
+
+.bodyBottom{
+    height: 19%;
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bodyBottom button{
+    height: 40px;
+    width: 30%;
+    background-color: #A9BCFF;
+    color: #474444;
+    font-size: 1.3vw;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+}
+
+.errorInput{
+    border: 1px solid #D60000 !important;
+    color: #D60000;
+}
+.errorInput::placeholder{
+    color: #D60000;
+    font-size: 15px;
+
+}

@@ -30,7 +30,8 @@
     width: 100%;
     height: 67%;
     /* background-color: #d54f4f; */
-    display: grid;
-    place-items: center;
+    
+   display: flex;
+   flex-direction: column;
 
 }
