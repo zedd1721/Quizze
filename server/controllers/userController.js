@@ -36,9 +36,10 @@ module.exports.register = async (req, res) => {
         await user.save();
 
          const token = generateToken(user);
-         return res.status(201).status({msg: "User created successfully", token});
+         return res.status(201).json({msg: "User created successfully", token});
 
     }catch(err){
+        console.error("Server Error:", err);
         return res.status(500).json({msg: `Internal server error: ${err.message}`});
     }
 };

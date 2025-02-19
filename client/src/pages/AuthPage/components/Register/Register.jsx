@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled from "./Register.module.css";
 import {  toast } from 'react-toastify';
+import axios from 'axios';
 
-function Register() {
+function Register({URL}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, seterror] = useState({});
+
 
   const validateForm = () => {
     const newError = {};
@@ -43,22 +45,25 @@ function Register() {
     //Returns True | False
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log({ name, email, password });
-      console.log("Submitted");
+    if(!validateForm()) return;
 
-      //******************* */
-      //API CAllssssssssssss
-      //******************** */
-
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    } else {
-      console.log("Form has errors");
+    try{
+      const response = await axios.post(`${URL}/api/users/register`, {name, email, password});
+      if(response.status === 201){
+        toast.success(response.data.msg);
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+      }
+    }catch(error){
+      console.error("Error:", error);
+      if (error.response) {
+          // Server responded with an error
+          toast.error(error.response.data.msg || "Registration failed");
+      } 
     }
   };
   return (

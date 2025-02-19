@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styled from "./Login.module.css";
 import { FaCopy } from "react-icons/fa";
 import { toast } from "react-toastify";
+import axios from "axios";
 
-function Login() {
+function Login({URL}) {
   const sampleEmail = "john.doe@example.com";
   const samplePassword = "password123";
   const [isEmailCopied, setIsEmailCopied] = useState(false);
@@ -58,20 +59,18 @@ function Login() {
     //Returns True | False
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log({ email, password });
-      console.log("Submitted");
-
-      //******************* */
-      //API CAllssssssssssss
-      //******************** */
-
-      setEmail("");
-      setPassword("");
-    } else {
-      console.log("Form has errors");
+    if (!validateForm()) return;
+    try{
+      const response = await axios.post(`${URL}/api/users/login`, {email, password});
+      if(response.status === 200){
+        toast.success(response.data.msg);
+        setEmail('');
+        setPassword('');
+      } 
+    }catch(error){
+      toast.error(error.response.data.msg);
     }
   };
   return (
