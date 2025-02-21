@@ -1,7 +1,7 @@
 const Quiz = require("../models/quizModel");
-const User = require("../models/userModel");
 const Option = require("../models/optionModel");
 const Question = require("../models/questionModel");
+const moment = require("moment-timezone");
 
 module.exports.createQuiz = async (req, res) => {
   try {
@@ -16,11 +16,11 @@ module.exports.createQuiz = async (req, res) => {
 
     let finalTimer = 0;
     if (timer) {
-        if (timer === 5 || timer === 10) {
-            finalTimer = timer;
-        } else {
-            return res.status(400).json({ message: "Invalid Timer" });
-        }
+      if (timer === 5 || timer === 10) {
+        finalTimer = timer;
+      } else {
+        return res.status(400).json({ message: "Invalid Timer" });
+      }
     }
 
     const quiz = new Quiz({
@@ -28,6 +28,7 @@ module.exports.createQuiz = async (req, res) => {
       type,
       creator: userId,
       timer: finalTimer,
+      createdAt: moment().tz("Asia/Kolkata").toDate(),
     });
     await quiz.save();
 
@@ -37,33 +38,53 @@ module.exports.createQuiz = async (req, res) => {
   }
 };
 
-module.exports.deleteQuiz = async (req, res) => {
-    try{
-        const {id} = req.params;
-        const userId = req.user._id;
+module.exports.getQuiz = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const quiz = await Quiz.findById(id).populate({
+      path: "questions",
+      populate: { path: "options" },
+    });
 
-        const quiz = await Quiz.findById(id);
-        if(!quiz){
-            return res.status(404).json({message: "Quiz not found"});
-        }
-
-        if(quiz.creator.toString() !== userId.toString()){
-            return res.status(403).json({message: "You are not authorized to delete this quiz"});
-        }
-
-        const questions = await Question.find({quiz: id});
-        for(let question of questions){
-            await Option.deleteMany({question: question._id});
-        }
-
-        await Question.deleteMany({quiz: id});
-
-        await Quiz.findByIdAndDelete(id);
-
-        return res.status(200).json({message: "Quiz deleted successfully"});
-
-
-    }catch(error){
-        res.status(500).json({message: error.message});
+    if(!quiz){
+        return res.status(404).json({message: 'Quiz not Found'})
     }
-}
+
+    return res.status(200).json(quiz);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: `Internal server error: ${error.message}` });
+  }
+};
+
+module.exports.deleteQuiz = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    const quiz = await Quiz.findById(id);
+    if (!quiz) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+
+    if (quiz.creator.toString() !== userId.toString()) {
+      return res
+        .status(403)
+        .json({ message: "You are not authorized to delete this quiz" });
+    }
+
+    const questions = await Question.find({ quiz: id });
+    for (let question of questions) {
+      await Option.deleteMany({ question: question._id });
+    }
+
+    await Question.deleteMany({ quiz: id });
+
+    await Quiz.findByIdAndDelete(id);
+
+    return res.status(200).json({ message: "Quiz deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
