@@ -7,7 +7,7 @@ const quizSchema = new mongoose.Schema({
     },
     type:{
         type: String,
-        enum: ["Q&A", "Poll"],
+        enum: ["Q & A", "Poll"],
         required: true,
     },
     creator: {
