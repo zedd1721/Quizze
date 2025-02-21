@@ -17,8 +17,8 @@ const quizSchema = new mongoose.Schema({
     },
     timer:{
         type: Number,
-        enum: ['off', '5sec', '10sec'],
-        default: 'off',
+        enum: [0 , 5, 10],
+        default: 0,
     },
     questions:[{
         type: mongoose.Schema.Types.ObjectId,
