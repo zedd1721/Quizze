@@ -18,7 +18,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6,
-    }
+    },
+    quizzes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Quiz'
+    }],
+    polls: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Poll'
+    }]
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
