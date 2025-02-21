@@ -8,11 +8,10 @@ const optionScehma = new mongoose.Schema({
     },
     text: {
         type: String,
-        default: null,
+        
     },
     image: {
         type: String,
-        default: null,
     },
 })
 
