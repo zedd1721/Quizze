@@ -12,7 +12,7 @@ function AuthPage({URL}) {
         <div className={styled.container}>
             <div className={styled.wrapper}>
                 <AuthHead selected={selected} setSelected={setSelected}/>
-                <div className={styled.bodyWrapper}>
+               <div className={styled.bodyWrapper}>
                     {selected === "signup" ? <Register URL={URL}/> : <Login URL={URL}/>}
                 </div>
             </div>

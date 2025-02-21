@@ -3,7 +3,7 @@
     width: 100%;
     
 
-    /* background-color: #6b4949; */
+    /* background-color: #6b4949;   */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +15,7 @@
     height: 60px;
     width: 70%;
 
-
+    /* background-color: #474444; */
 
     display: flex;
     align-items: center;
@@ -87,4 +87,43 @@
     color: #D60000;
     font-size: 15px;
 
+}
+
+
+@media (max-width: 770px) {
+    .input1, .input2, .input3, .input4{
+        width: 85%;
+    }
+
+    .input1 h3, .input2 h3, .input3 h3, .input4 h3{
+        font-size: 2.1vw;
+    }
+    .bodyTop input, .errorInput::placeholder{
+        font-size: 1.8vw;
+    }
+    .bodyBottom button{
+        width: 30%;
+        font-size: 2.1vw;
+    }
+}
+
+@media (max-width: 430px) {
+    .input1, .input2, .input3, .input4{
+        width: 95%;
+        gap: 10px;
+    }
+    .input1Left, .input2Left, .input3Left, .input4Left{
+        width: 45%;
+    }
+
+    .input1 h3, .input2 h3, .input3 h3, .input4 h3{
+        font-size: 15px;
+    }
+    .bodyTop input, .errorInput::placeholder{
+        font-size: 15px;
+    }
+    .bodyBottom button{
+        width: 40%;
+        font-size: 15px;    
+    }
 }

@@ -38,10 +38,12 @@
     width: 30%;
     border-radius: 10px;
     
-    display: grid;
-    place-items: center;
-    padding: 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+
+    /* background-color: #474444; */
 }
 
 .active{
@@ -50,4 +52,22 @@
 
 .headBottomLeft h3, .headBottomRight h3{
     color: #474444;
+}
+
+@media (max-width: 770px) {
+    .headBottomLeft, .headBottomRight{
+        width: 35%;
+        height: 70%;
+    }
+}
+
+@media (max-width: 430px ){
+    
+    .headBottomLeft, .headBottomRight{
+        width: 45%;
+        height: 70%;
+    }
+    .headBottomLeft h3, .headBottomRight h3{
+        font-size: 15px;
+    }
 }

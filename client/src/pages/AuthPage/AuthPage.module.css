@@ -35,3 +35,21 @@
    flex-direction: column;
 
 }
+
+@media (max-width: 770px) {
+    .container{
+        overflow: hidden;
+    }
+    .wrapper{
+        width: 80%;
+    }
+    
+}
+
+@media (max-width: 430px ) {
+    
+    .wrapper{
+        width: 100%;
+    }
+}
+
