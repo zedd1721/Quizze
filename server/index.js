@@ -4,6 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 const userRoutes = require('./routes/userRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+const questionRoutes = require('./routes/questionRoute')
 const { default: mongoose } = require("mongoose");
 dotenv.config();
 const app = express();
@@ -18,7 +20,8 @@ app.use(cors({
 
 //Routes
 app.use('/api/users', userRoutes);
-
+app.use('/api/quiz', quizRoutes);
+app.use('/api/question', questionRoutes);
 
 
 
