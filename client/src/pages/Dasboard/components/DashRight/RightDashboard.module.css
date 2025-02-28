@@ -1,0 +1,11 @@
+.main{
+    width: 85%;
+    height: 100%;
+    background-color: #EDEDED;
+}
+
+@media (max-width:430px) {
+    .main{
+        width: 100%;
+    }
+}
