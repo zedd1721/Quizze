@@ -1,0 +1,141 @@
+.mainTop {
+  width: 100%;
+  height: 35%;
+  /* background-color: antiquewhite; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.quizCreated,
+.questionCreated,
+.totalImpression {
+  width: 280px;
+  height: 140px;
+  background-color: white;
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.quizCreated h1,
+.questionCreated h1,
+.totalImpression h1 {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 50px;
+  font-weight: 600;
+}
+.quizCreated h1 span,
+.questionCreated h1 span,
+.totalImpression h1 span {
+  font-size: 25px;
+}
+
+.quizCreated h2,
+.questionCreated h2,
+.totalImpression h2 {
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.quizCreated {
+  color: #ff5d01;
+}
+.questionCreated {
+  color: #60b84b;
+}
+.totalImpression {
+  color: #5076ff;
+}
+
+.mainBottom {
+  width: 100%;
+  height: 65%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  /* background-color: #FF5D01; */
+
+}
+
+.bottomHead {
+  height: 100px;
+  padding-left: 80px;
+}
+
+.bottomHead h1 {
+  color: #474444;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.bottomContent {
+  /* background-color: #2e8b57; */
+  width: 75%;
+  height: 60%;
+  background-color: antiquewhite;
+
+  display: flex;
+  align-items: start;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.quizCard {
+    height: 82px;
+    width: 180px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.quizCardTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quizTitle {
+    font-size: 25px;
+    font-weight: 600;
+    color: #474444;
+}
+
+.quizStats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #ff5d01;
+}
+.icon{
+    color: #ff5d01;
+}
+
+.views {
+   
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+.quizDate {
+    font-size: 11px;
+    color: #60b84b;
+    font-weight: 600;
+    margin-top: 3px;
+}

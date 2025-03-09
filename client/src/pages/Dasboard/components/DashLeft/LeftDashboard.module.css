@@ -125,4 +125,15 @@
         top: 10px;
         right: 15px;
     }
+
+    .head  h1{
+        font-size: 15vw;
+    }
+    .dashboard h3, .analytics h3, .createQuiz h3{
+        font-size: 5vw;
+    }
+
+    .bottom h2{
+        font-size: 5vw;
+    }
 }
